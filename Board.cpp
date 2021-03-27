@@ -24,7 +24,6 @@ Board::~Board(){
 
 void Board::post(unsigned int row, unsigned int column, Direction d, std::string message){
 	
-	std::cout << "posting" << std::endl;
 
 	//Check if in row and cols are in the allocated board
 	if(d==Direction::Horizontal){	 //Horizontal
@@ -54,7 +53,7 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 }
 std::string Board::read(unsigned int row, unsigned int column, Direction d , unsigned int length){
 	string str = "";
-		std::cout << "reading" << std::endl;
+
 	//Check if in row and cols are in the allocated board
 	if(d==Direction::Horizontal){	 //Horizontal
 		if(column<cols ){
@@ -113,7 +112,7 @@ void Board::show(){
 
 
 void Board::resize(unsigned int add_rows, unsigned int add_cols){
-	std::cout << "resizing" << add_cols << ","<<add_rows<< std::endl;
+
 	//Adding new rows
 	for(int i=0;i<add_rows;++i){
 		string column;
