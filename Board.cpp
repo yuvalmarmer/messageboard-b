@@ -105,4 +105,7 @@ void Board::resize(unsigned int add_rows, unsigned int add_cols){
 		}
 		board->at(i)=column;
 	}
+
+	rows = add_rows + rows;
+	cols = add_cols + cols;
 }
