@@ -18,7 +18,7 @@ Board::Board(){
 
 }
 Board::~Board(){
-	delete[] board;
+	delete board;
 }
 
 
