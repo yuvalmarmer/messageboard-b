@@ -31,7 +31,7 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 			resize(0,message.length()+column-cols+1);
 
 		}
-		if(row > rows){
+		if(row >= rows){
 			resize(row-rows+1,0);
 		}
 		for(size_t i=0;i<message.length();++i){
@@ -42,7 +42,7 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 		if(message.length() + row >= rows){
 			resize(message.length()+row-rows+1,0);
 		}
-		if(column > cols){
+		if(column >= cols){
 			resize(0,column-cols+1);
 		}
 		
