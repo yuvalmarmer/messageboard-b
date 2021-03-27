@@ -18,6 +18,7 @@ Board::Board(){
 
 }
 Board::~Board(){
+	board->clear();
 	delete board;
 }
 
