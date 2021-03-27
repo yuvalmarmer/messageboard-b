@@ -18,7 +18,7 @@ Board::Board(){
 
 }
 Board::~Board(){
-	
+	delete[] board;
 }
 
 
@@ -54,7 +54,7 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 	
 }
 std::string Board::read(unsigned int row, unsigned int column, Direction d , unsigned int length){
-	string str = "";
+	string str;
 
 	//Check if in row and cols are in the allocated board
 	if(d==Direction::Horizontal){	 //Horizontal
