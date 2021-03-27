@@ -15,8 +15,8 @@ namespace ariel {
 			void show();
 		
 		private:
-			int rows = 10;
-			int cols = 10;
+		    unsigned int rows = 10;
+			unsigned int cols = 10;
 			vector<string> *board;
 			void resize(unsigned int add_rows, unsigned int add_cols);
  	};
