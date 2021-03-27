@@ -45,6 +45,7 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 }
 std::string Board::read(unsigned int row, unsigned int column, Direction d , unsigned int length){
 	string str = "";
+	Board::show();
 	//Check if in row and cols are in the allocated board
 	if(d==Direction::Horizontal){	 //Horizontal
 		if(column+length < cols){
@@ -80,6 +81,10 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 }
 
 void Board::show(){
+
+	for(int i=0;i<board->size(); ++i){
+		std::cout << board->at(i) << endl;
+	}
 }
 
 
