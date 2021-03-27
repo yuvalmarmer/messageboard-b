@@ -13,9 +13,11 @@ namespace ariel {
 			void post(unsigned int row, unsigned int column, Direction d, std::string message);
 			std::string read(unsigned int row, unsigned int column, Direction d, unsigned int length);
 			void show();
+		
 		private:
 			int rows = 10;
 			int cols = 10;
 			vector<string> *board;
+			void resize(unsigned int add_rows, unsigned int add_cols);
  	};
 }

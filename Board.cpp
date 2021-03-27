@@ -23,20 +23,56 @@ Board::~Board(){
 
 
 void Board::post(unsigned int row, unsigned int column, Direction d, std::string message){
+	//Check if in row and cols are in the allocated board
+	if(d==Direction::Horizontal){	 //Horizontal
+		if(message.length() + column > cols){
+			resize(0,message.length()+column-cols);
+		}
+		for(size_t i=0;i<message.length();++i){
+				board[row].at(column+i) = message[i];
+		}
+	}
+	else if(d==Direction::Vertical ){ 	//Vertical
+		if(message.length() + row > rows){
+			resize(message.length()+row-rows,0);
+		}
+		for(size_t i=0;i<message.length();++i){
+				board[i].at(row+i) = message[i];
+		}
+	}
+
 	
 }
 std::string Board::read(unsigned int row, unsigned int column, Direction d , unsigned int length){
 	string str = "";
 	//Check if in row and cols are in the allocated board
-	if(row+length<rows && column+length<cols){ 
-		if(d==Direction::Horizontal){	
+	if(d==Direction::Horizontal){	 //Horizontal
+		if(column+length < cols){
 			for(size_t i=0;i<length;++i){
 				str += board[row].at(i);
 			}
 		}
-		else{ //Vertical
+		else{
+			for(size_t i=0;i<(cols-column);++i){
+				str += board[row].at(i);
+			}
+			for(size_t i=0;i<(column+length-cols);++i){
+				str += "_";
+			}
+		}
+	}
+	else if(d==Direction::Vertical ){ 	//Vertical
+		if( row+length<rows){
 			for(size_t i=0;i<length;++i){
 				str += board[i].at(column);
+			}
+		}
+		else{
+			for(size_t i=0;i<(rows-row);++i){
+				str += board[i].at(column);
+			}
+			for(size_t i=0;i<(row+length-rows);++i){
+				str += "_";
 			}
 		}
 	}
@@ -44,4 +80,24 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 }
 
 void Board::show(){
+}
+
+
+void Board::resize(unsigned int add_rows, unsigned int add_cols){
+	//Adding new rows
+	for(int i=0;i<add_rows;++i){
+		string column;
+		for(int j =0;j<cols;++j){
+			column.push_back('_');
+		}
+		board->push_back(column);
+	}
+	//Adding new cols
+	for(int i=0;i<rows;++i){
+		string column = board->at(i);
+		for(int j =0;j<add_cols;++j){
+			column.push_back('_');
+		}
+		board->at(i)=column;
+	}
 }
