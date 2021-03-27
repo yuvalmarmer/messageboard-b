@@ -48,32 +48,47 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 	Board::show();
 	//Check if in row and cols are in the allocated board
 	if(d==Direction::Horizontal){	 //Horizontal
-		if(column+length < cols){
-			for(size_t i=0;i<length;++i){
-				str.push_back(board->at(row).at(i));
+		if(column<cols){
+			if(column+length < cols){
+				for(size_t i=0;i<length;++i){
+					str.push_back(board->at(row).at(i));
+				}
+			}
+			else{
+				for(size_t i=0;i<(cols-column);++i){
+					str += board->at(row).at(i);
+				}
+				for(size_t i=0;i<(column+length-cols);++i){
+					str += "_";
+				}
 			}
 		}
 		else{
-			for(size_t i=0;i<(cols-column);++i){
-				str += board->at(row).at(i);
-			}
-			for(size_t i=0;i<(column+length-cols);++i){
-				str += "_";
-			}
+				for(size_t i=0;i<length;++i){
+					str += "_";
+				}
 		}
 	}
 	else if(d==Direction::Vertical ){ 	//Vertical
-		if( row+length<rows){
-			for(size_t i=0;i<length;++i){
-				str += board->at(i).at(column);
+		if(row<rows){
+			if( row+length<rows){
+				for(size_t i=0;i<length;++i){
+					str += board->at(i).at(column);
+				}
+			}
+			else{
+				for(size_t i=0;i<(rows-row);++i){
+					str += board->at(i).at(column);
+				}
+				for(size_t i=0;i<(row+length-rows);++i){
+					str += "_";
+				}
 			}
 		}
+		
 		else{
-			for(size_t i=0;i<(rows-row);++i){
-				str += board->at(i).at(column);
-			}
-			for(size_t i=0;i<(row+length-rows);++i){
-				str += "_";
+			for(size_t i=0;i<length;++i){
+					str += "_";
 			}
 		}
 	}
