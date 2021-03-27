@@ -27,7 +27,7 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 
 	//Check if in row and cols are in the allocated board
 	if(d==Direction::Horizontal){	 //Horizontal
-		if(message.length() + column > cols){
+		if(message.length() + column >= cols){
 			resize(0,message.length()+column-cols+1);
 
 		}
@@ -39,7 +39,7 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 		}
 	}
 	else if(d==Direction::Vertical ){ 	//Vertical
-		if(message.length() + row > rows){
+		if(message.length() + row >= rows){
 			resize(message.length()+row-rows+1,0);
 		}
 		if(column > cols){
