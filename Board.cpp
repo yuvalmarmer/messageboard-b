@@ -23,10 +23,16 @@ Board::~Board(){
 
 
 void Board::post(unsigned int row, unsigned int column, Direction d, std::string message){
+	
+
+
 	//Check if in row and cols are in the allocated board
 	if(d==Direction::Horizontal){	 //Horizontal
 		if(message.length() + column > cols){
 			resize(0,message.length()+column-cols);
+			if(row > rows){
+				resize(rows-row,0);
+			}
 		}
 		for(size_t i=0;i<message.length();++i){
 				board->at(row).at(column+i) = message[i];
@@ -35,6 +41,9 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 	else if(d==Direction::Vertical ){ 	//Vertical
 		if(message.length() + row > rows){
 			resize(message.length()+row-rows,0);
+			if(column > cols){
+				resize(0,column-cols);
+			}
 		}
 		for(size_t i=0;i<message.length();++i){
 				board->at(i).at(row) = message[i];
@@ -48,7 +57,7 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 	Board::show();
 	//Check if in row and cols are in the allocated board
 	if(d==Direction::Horizontal){	 //Horizontal
-		if(column<cols){
+		if(column<cols ){
 			if(column+length < cols){
 				for(size_t i=0;i<length;++i){
 					str.push_back(board->at(row).at(i));
