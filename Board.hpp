@@ -10,8 +10,8 @@ namespace ariel {
         public :
 			Board();
 			~Board();
-			void post(int row, int column, Direction d, std::string message);
-			std::string read(int row, int column, Direction d, int length);
+			void post(unsigned int row, unsigned int column, Direction d, std::string message);
+			std::string read(unsigned int row, unsigned int column, Direction d, int length);
 			void show();
 		private:
 			int rows = 10;

@@ -22,10 +22,10 @@ Board::~Board(){
 }
 
 
-void Board::post(int row, int column, Direction d, std::string message){
+void Board::post(unsigned int row, unsigned int column, Direction d, std::string message){
 	
 }
-std::string Board::read(int row, int column, Direction d , int length){
+std::string Board::read(unsigned int row, unsigned int column, Direction d , int length){
 	string str = "";
 	//Check if in row and cols are in the allocated board
 	if(row+length<rows && column+length<cols){ 
