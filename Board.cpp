@@ -18,7 +18,11 @@ Board::Board(){
 
 }
 Board::~Board(){
-	board->clear();
+
+	for(vector<string>::iterator it = board->begin(); it != board->end(); ++it) {
+		delete &it;
+		board->erase(it);
+	}
 	delete board;
 }
 
