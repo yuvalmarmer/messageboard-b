@@ -29,7 +29,7 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 			resize(0,message.length()+column-cols);
 		}
 		for(size_t i=0;i<message.length();++i){
-				board[row].at(column+i) = message[i];
+				board->at(row).at(column+i) = message[i];
 		}
 	}
 	else if(d==Direction::Vertical ){ 	//Vertical
@@ -37,7 +37,7 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 			resize(message.length()+row-rows,0);
 		}
 		for(size_t i=0;i<message.length();++i){
-				board[i].at(row+i) = message[i];
+				board->at(i).at(row+i) = message[i];
 		}
 	}
 
@@ -50,12 +50,12 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 	if(d==Direction::Horizontal){	 //Horizontal
 		if(column+length < cols){
 			for(size_t i=0;i<length;++i){
-				str += board[row].at(i);
+				str.push_back(board->at(row).at(i));
 			}
 		}
 		else{
 			for(size_t i=0;i<(cols-column);++i){
-				str += board[row].at(i);
+				str += board->at(row).at(i);
 			}
 			for(size_t i=0;i<(column+length-cols);++i){
 				str += "_";
@@ -65,12 +65,12 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 	else if(d==Direction::Vertical ){ 	//Vertical
 		if( row+length<rows){
 			for(size_t i=0;i<length;++i){
-				str += board[i].at(column);
+				str += board->at(i).at(column);
 			}
 		}
 		else{
 			for(size_t i=0;i<(rows-row);++i){
-				str += board[i].at(column);
+				str += board->at(i).at(column);
 			}
 			for(size_t i=0;i<(row+length-rows);++i){
 				str += "_";
