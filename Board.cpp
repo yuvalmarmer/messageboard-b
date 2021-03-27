@@ -60,12 +60,12 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 		if(column<cols ){
 			if(column+length < cols){
 				for(size_t i=0;i<length;++i){
-					str.push_back(board->at(row).at(i));
+					str.push_back(board->at(row).at(column+i));
 				}
 			}
 			else{
 				for(size_t i=0;i<(cols-column);++i){
-					str += board->at(row).at(i);
+					str += board->at(row).at(column+i);
 				}
 				for(size_t i=0;i<(column+length-cols);++i){
 					str += "_";
@@ -82,12 +82,12 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 		if(row<rows){
 			if( row+length<rows){
 				for(size_t i=0;i<length;++i){
-					str += board->at(i).at(column);
+					str += board->at(row+i).at(column);
 				}
 			}
 			else{
 				for(size_t i=0;i<(rows-row);++i){
-					str += board->at(i).at(column);
+					str += board->at(row+i).at(column);
 				}
 				for(size_t i=0;i<(row+length-rows);++i){
 					str += "_";
