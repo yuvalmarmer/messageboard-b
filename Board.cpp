@@ -46,7 +46,7 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 			}
 		}
 		for(size_t i=0;i<message.length();++i){
-				board->at(i).at(row) = message[i];
+				board->at(row+i).at(column) = message[i];
 		}
 	}
 
