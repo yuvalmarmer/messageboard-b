@@ -124,12 +124,12 @@ void Board::resize(unsigned int add_rows, unsigned int add_cols){
 		board->push_back(column);
 	}
 	//Adding new cols
-	for(unsigned int i=0;i<rows&&add_cols>0;++i){
-		string column = board->at(i);
+	for(unsigned int i=0;i<rows;++i){
+		string row = board->at(i);
 		for(int j =0;j<add_cols;++j){
-			column.push_back('_');
+			row.push_back('_');
 		}
-		board->at(i)=column;
+		board->at(i)=row;
 	}
 
 	rows = add_rows + rows;
