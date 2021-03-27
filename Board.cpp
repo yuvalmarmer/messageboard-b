@@ -113,7 +113,7 @@ void Board::show(){
 
 
 void Board::resize(unsigned int add_rows, unsigned int add_cols){
-	std::cout << "resizing" << std::endl;
+	std::cout << "resizing" << add_cols << ","<<add_rows<< std::endl;
 	//Adding new rows
 	for(int i=0;i<add_rows;++i){
 		string column;
