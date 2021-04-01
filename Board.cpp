@@ -128,14 +128,14 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 
 void Board::show(){
 
-	for(size_t i = topRowPost;i < bottRowPost-1; ++i){
+	for(size_t i = topRowPost;i < bottRowPost; ++i){
 		for (size_t j = leftColPost; j < rightColPost;++j){
 			std::cout << board->at(i)[j];
 		}
 		std::cout << std::endl;
 	}
-	// std::cout << "TOP : " << topRowPost << ", BOTT : " << bottRowPost << std::endl;
-	// std::cout << "LEFT : " << leftColPost << ", RIGHT : " << rightColPost << std::endl;
+	std::cout << "TOP : " << topRowPost << ", BOTT : " << bottRowPost << std::endl;
+	std::cout << "LEFT : " << leftColPost << ", RIGHT : " << rightColPost << std::endl;
 }
 
 
