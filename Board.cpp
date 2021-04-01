@@ -7,7 +7,6 @@ using namespace std;
 
 Board::Board(){
 	// Initi the board with fix sizes (rows, cols)
-	// board = new vector<string>;
 	for(int i=0;i<rows;++i){
 		string column;
 		for(int j =0;j<cols;++j){
@@ -18,7 +17,6 @@ Board::Board(){
 
 }
 Board::~Board(){
-	// delete board;
 }
 
 
