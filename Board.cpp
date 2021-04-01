@@ -1,6 +1,7 @@
 #include "Board.hpp"
 #include <string>
 #include "Direction.hpp"
+#include <climits>
 
 
 using namespace ariel;
@@ -25,18 +26,15 @@ Board::~Board(){
 
 void Board::post(unsigned int row, unsigned int column, Direction d, std::string message){
 	
-
-
-
 	//Check if in row and cols are in the allocated board
 	if(d==Direction::Horizontal){	 //Horizontal
 
-	if(leftColPost>column){
-		leftColPost=column;
-	}
-	if(rightColPost<column+message.length()){
-		rightColPost=column+message.length();
-	}
+		if(leftColPost>column){
+			leftColPost=column;
+		}
+		if(rightColPost<column+message.length()){
+			rightColPost=column+message.length();
+		}
 
 
 		if(message.length() + column >= cols){
@@ -52,13 +50,13 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 	}
 	else if(d==Direction::Vertical ){ 	//Vertical
 
-	if(topRowPost>row){
-		topRowPost=row;
-	}
+		if(topRowPost>row){
+			topRowPost=row;
+		}
 
-	if(bottRowPost<row+message.length()){
-		bottRowPost=row+message.length();
-	}
+		if(bottRowPost<row+message.length()){
+			bottRowPost=row+message.length();
+		}
 
 		if(message.length() + row >= rows){
 			resize(message.length()+row-rows+1,0);
@@ -130,7 +128,14 @@ void Board::show(){
 	std::cout << "TOP : " << topRowPost << ", BOTT : " << bottRowPost << std::endl;
 	std::cout << "LEFT : " << leftColPost << ", RIGHT : " << rightColPost << std::endl;
 
-
+	if (topRowPost==UINT_MAX){
+		topRowPost = 0;
+		bottRowPost=board->size();
+	}
+	if (leftColPost==UINT_MAX){
+		leftColPost = 0;
+		rightColPost=board->at(0).length();
+	}
 	for(size_t i = topRowPost;i < bottRowPost; ++i){
 		for (size_t j = leftColPost; j < rightColPost;++j){
 			std::cout << board->at(i)[j];
