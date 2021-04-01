@@ -30,11 +30,11 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 	//Check if in row and cols are in the allocated board
 	if(d==Direction::Horizontal){	 //Horizontal
 
-		if(this->lestColPost>column){
-			this->lestColPost=column;
+		if(leftColPost>column){
+			leftColPost=column;
 		}
-		if(this->rightColPost<column+message.length()){
-			this->rightColPost=column+message.length();
+		if(rightColPost<column+message.length()){
+			rightColPost=column+message.length();
 		}
 
 		if(message.length() + column >= cols){
@@ -50,12 +50,12 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 	}
 	else if(d==Direction::Vertical ){ 	//Vertical
 
-		if(this->topRowPost>row){
-			this->topRowPost=row;
+		if(topRowPost>row){
+			topRowPost=row;
 		}
 
-		if(this->bottRowPost<row+message.length()){
-			this->bottRowPost=row+message.length();
+		if(bottRowPost<row+message.length()){
+			bottRowPost=row+message.length();
 		}
 
 		if(message.length() + row >= rows){
@@ -129,8 +129,8 @@ void Board::show(){
 	for(size_t i=0;i<board->size(); ++i){
 		std::cout << board->at(i) << endl;
 	}
-	std::cout << "TOP : " << this->topRowPost << ", BOTT : " << this->bottRowPost << std::endl;
-	std::cout << "LEFT : " << this->lestColPost << ", RIGHT : " << this->rightColPost << std::endl;
+	std::cout << "TOP : " << topRowPost << ", BOTT : " << bottRowPost << std::endl;
+	std::cout << "LEFT : " << leftColPost << ", RIGHT : " << rightColPost << std::endl;
 }
 
 

@@ -19,7 +19,7 @@ namespace ariel {
 			unsigned int cols = 10;
 			unsigned int topRowPost = 1000;
 			unsigned int bottRowPost = 0;
-			unsigned int lestColPost = 1000;
+			unsigned int leftColPost = 1000;
 			unsigned int rightColPost = 0;
 			
 			vector<string> *board;
