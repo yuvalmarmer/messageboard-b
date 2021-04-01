@@ -29,14 +29,16 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 	//Check if in row and cols are in the allocated board
 	if(d==Direction::Horizontal){	 //Horizontal
 
+		//Changing the left column that was posting
 		if(leftColPost>column){
 			leftColPost=column;
 		}
+		//Changing the right column that was posting
 		if(rightColPost<column+message.length()){
 			rightColPost=column+message.length();
 		}
 
-
+		//Resizing the board if needed
 		if(message.length() + column >= cols){
 			resize(0,message.length()+column-cols+1);
 
@@ -44,27 +46,28 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 		if(row >= rows){
 			resize(row-rows+1,0);
 		}
+		//Posting the message
 		for(size_t i=0;i<message.length();++i){
 				board->at(row).at(column+i) = message[i];
 		}
 	}
 	else if(d==Direction::Vertical ){ 	//Vertical
-
+		//Changing the top row that was posting
 		if(topRowPost>row){
 			topRowPost=row;
 		}
-
+		//Changing the bottom row that was posting
 		if(bottRowPost<row+message.length()){
 			bottRowPost=row+message.length();
 		}
-
+		//Resizing the board if needed
 		if(message.length() + row >= rows){
 			resize(message.length()+row-rows+1,0);
 		}
 		if(column >= cols){
 			resize(0,column-cols+1);
 		}
-		
+		//Posting the message
 		for(size_t i=0;i<message.length();++i){
 				board->at(row+i).at(column) = message[i];
 		}
@@ -125,17 +128,18 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 }
 
 void Board::show(){
-	std::cout << "TOP : " << topRowPost << ", BOTT : " << bottRowPost << std::endl;
-	std::cout << "LEFT : " << leftColPost << ", RIGHT : " << rightColPost << std::endl;
 
+	//If top row didnt change at all then all vertical
 	if (topRowPost==UINT_MAX){
 		topRowPost = 0;
 		bottRowPost=board->size();
 	}
+	//If left column didnt change at all then all horizontal
 	if (leftColPost==UINT_MAX){
 		leftColPost = 0;
 		rightColPost=board->at(0).length();
 	}
+
 	for(size_t i = topRowPost;i < bottRowPost; ++i){
 		for (size_t j = leftColPost; j < rightColPost;++j){
 			std::cout << board->at(i)[j];
