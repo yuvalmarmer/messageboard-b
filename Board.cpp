@@ -47,6 +47,9 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 			resize(row-rows+1,0);
 		}
 		//Posting the message
+		if(board->at(row) == ""){
+			initRow(row);
+		}
 		for(size_t i=0;i<message.length();++i){
 				board->at(row).at(column+i) = message[i];
 		}
@@ -69,6 +72,9 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 		}
 		//Posting the message
 		for(size_t i=0;i<message.length();++i){
+				if(board->at(row+i) == ""){
+					initRow(row+i);
+				}
 				board->at(row+i).at(column) = message[i];
 		}
 	}
@@ -83,12 +89,22 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 		if(column<cols ){
 			if(column+length < cols){
 				for(size_t i=0;i<length;++i){
-					str.push_back(board->at(row).at(column+i));
+					if(board->at(row) != ""){
+						str.push_back(board->at(row).at(column+i));
+					}
+					else{
+						str.push_back('_');
+					}
 				}
 			}
 			else{
 				for(size_t i=0;i<(cols-column);++i){
-					str += board->at(row).at(column+i);
+					if(board->at(row) != ""){
+						str += board->at(row).at(column+i);
+					}
+					else{
+						str += "_";
+					}
 				}
 				for(size_t i=0;i<(column+length-cols);++i){
 					str += "_";
@@ -105,12 +121,22 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 		if(row<rows){
 			if( row+length<rows){
 				for(size_t i=0;i<length;++i){
-					str += board->at(row+i).at(column);
+					if(board->at(row+i) != ""){
+						str += board->at(row+i).at(column);
+					}
+					else{
+						str += "_";
+					}
 				}
 			}
 			else{
 				for(size_t i=0;i<(rows-row);++i){
-					str += board->at(row+i).at(column);
+					if(board->at(row+i) != ""){
+						str += board->at(row+i).at(column);
+					}
+					else{
+						str += "_";
+					}
 				}
 				for(size_t i=0;i<(row+length-rows);++i){
 					str += "_";
@@ -153,23 +179,34 @@ void Board::show(){
 void Board::resize(unsigned int add_rows, unsigned int add_cols){
 
 	//Adding new rows
-	for(int i=0;i<add_rows;++i){
-		string column;
-		for(int j =0;j<cols;++j){
-			column.push_back('_');
-		}
-		board->push_back(column);
-	}
-
+	// for(int i=0;i<add_rows;++i){
+	// 	string column;
+	// 	for(int j =0;j<cols;++j){
+	// 		column.push_back('_');
+	// 	}
+	// 	board->push_back(column);
+	// }
+	board->resize(rows+add_rows);
 	//Adding new cols
 	for(unsigned int i=0;i<rows;++i){
-		string row = board->at(i);
-		for(int j =0;j<add_cols;++j){
-			row.push_back('_');
+		if(board->at(i) != ""){
+			string row = board->at(i);
+			for(int j =0;j<add_cols;++j){
+				row.push_back('_');
+			}
+			board->at(i)=row;
 		}
-		board->at(i)=row;
 	}
 
 	rows = add_rows + rows;
 	cols = add_cols + cols;
+}
+
+
+void Board::initRow(unsigned int row){
+	string newRow;
+	for(int i=0;i<cols;++i){
+		newRow.push_back('_');
+	}
+	board->at(row) = newRow;
 }

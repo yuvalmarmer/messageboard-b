@@ -25,5 +25,6 @@ namespace ariel {
 			
 			vector<string> *board;
 			void resize(unsigned int add_rows, unsigned int add_cols);
+			void initRow(unsigned int row);
  	};
 }
