@@ -17,7 +17,9 @@ Board::Board(){
 	}
 
 }
-Board::~Board(){}
+Board::~Board(){
+	delete board;
+}
 
 
 void Board::post(unsigned int row, unsigned int column, Direction d, std::string message){
