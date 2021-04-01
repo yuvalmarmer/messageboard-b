@@ -46,7 +46,7 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 	if(d==Direction::Horizontal){	 //Horizontal
 
 		if(message.length() + column >= cols){
-			resize(message.length()+row-rows+1,message.length()+column-cols+1);
+			resize(0,message.length()+column-cols+1);
 
 		}
 		if(row >= rows){
@@ -61,7 +61,7 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 
 
 		if(message.length() + row >= rows){
-			resize(message.length()+row-rows+1,message.length()+column-cols+1);
+			resize(message.length()+row-rows+1,0);
 		}
 		if(column >= cols){
 			resize(0,column-cols+1);
