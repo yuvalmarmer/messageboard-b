@@ -8,7 +8,7 @@ using namespace ariel;
 using namespace std;
 
 Board::Board(){
-	// Initi the board with fix sizes (rows, cols)
+	// Init the board with fix sizes (rows, cols)
 	board = new vector<string>;
 	for(int i=0;i<rows;++i){
 		string column;
@@ -72,6 +72,7 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 		}
 		//Posting the message
 		for(size_t i=0;i<message.length();++i){
+				//Checking if empty then init the row
 				if(board->at(row+i) == ""){
 					initRow(row+i);
 				}
@@ -84,11 +85,13 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 std::string Board::read(unsigned int row, unsigned int column, Direction d , unsigned int length){
 	string str;
 
-	//Check if in row and cols are in the allocated board
-	if(d==Direction::Horizontal){	 //Horizontal
+	//Horizontal
+	if(d==Direction::Horizontal){	 
+		//Check if in row and cols are in the allocated board
 		if(column<cols ){
 			if(column+length < cols){
 				for(size_t i=0;i<length;++i){
+					//Checking if it a empty row
 					if(board->at(row) != ""){
 						str.push_back(board->at(row).at(column+i));
 					}
@@ -99,6 +102,7 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 			}
 			else{
 				for(size_t i=0;i<(cols-column);++i){
+					//Checking if it a empty row
 					if(board->at(row) != ""){
 						str += board->at(row).at(column+i);
 					}
@@ -106,21 +110,26 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 						str += "_";
 					}
 				}
+				// Adding all extra chars
 				for(size_t i=0;i<(column+length-cols);++i){
 					str += "_";
 				}
 			}
 		}
 		else{
+				//Return string of '_' 
 				for(size_t i=0;i<length;++i){
 					str += "_";
 				}
 		}
 	}
-	else if(d==Direction::Vertical ){ 	//Vertical
+	//Vertical
+	else if(d==Direction::Vertical ){ 
+		//Check if in row and cols are in the allocated board
 		if(row<rows){
 			if( row+length<rows){
 				for(size_t i=0;i<length;++i){
+					//Checking if it a empty row
 					if(board->at(row+i) != ""){
 						str += board->at(row+i).at(column);
 					}
@@ -131,6 +140,7 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 			}
 			else{
 				for(size_t i=0;i<(rows-row);++i){
+					//Checking if it a empty row
 					if(board->at(row+i) != ""){
 						str += board->at(row+i).at(column);
 					}
@@ -138,6 +148,7 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 						str += "_";
 					}
 				}
+				// Adding all extra chars
 				for(size_t i=0;i<(row+length-rows);++i){
 					str += "_";
 				}
@@ -145,6 +156,7 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 		}
 		
 		else{
+			//Return string of '_' 
 			for(size_t i=0;i<length;++i){
 					str += "_";
 			}
@@ -178,14 +190,7 @@ void Board::show(){
 
 void Board::resize(unsigned int add_rows, unsigned int add_cols){
 
-	//Adding new rows
-	// for(int i=0;i<add_rows;++i){
-	// 	string column;
-	// 	for(int j =0;j<cols;++j){
-	// 		column.push_back('_');
-	// 	}
-	// 	board->push_back(column);
-	// }
+	//Adding new empty rows 
 	board->resize(rows+add_rows);
 	//Adding new cols
 	for(unsigned int i=0;i<rows;++i){
@@ -204,6 +209,7 @@ void Board::resize(unsigned int add_rows, unsigned int add_cols){
 
 
 void Board::initRow(unsigned int row){
+	//Initizilte the rows 
 	string newRow;
 	for(int i=0;i<cols;++i){
 		newRow.push_back('_');
