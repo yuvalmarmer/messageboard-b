@@ -2,6 +2,7 @@
 #include <string>
 #include "Direction.hpp"
 
+
 using namespace ariel;
 using namespace std;
 
@@ -32,7 +33,6 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 		rightColPost=column+message.length();
 	}
 
-
 	if(topRowPost>row){
 		topRowPost=row;
 	}
@@ -40,6 +40,8 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 	if(bottRowPost<row+message.length()){
 		bottRowPost=row+message.length();
 	}
+
+
 	//Check if in row and cols are in the allocated board
 	if(d==Direction::Horizontal){	 //Horizontal
 
@@ -126,11 +128,14 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 
 void Board::show(){
 
-	for(size_t i=0;i<board->size(); ++i){
-		std::cout << board->at(i) << endl;
+	for(size_t i=topRowPost;i<=bottRowPost; ++i){
+		for (size_t j = leftColPost; j<=rightColPost;++j){
+			std::cout << board->at(i)[j] << endl;
+		}
+		
 	}
-	std::cout << "TOP : " << topRowPost << ", BOTT : " << bottRowPost << std::endl;
-	std::cout << "LEFT : " << leftColPost << ", RIGHT : " << rightColPost << std::endl;
+	// std::cout << "TOP : " << topRowPost << ", BOTT : " << bottRowPost << std::endl;
+	// std::cout << "LEFT : " << leftColPost << ", RIGHT : " << rightColPost << std::endl;
 }
 
 
