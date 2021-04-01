@@ -29,21 +29,16 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 	if(leftColPost>column){
 		leftColPost=column;
 	}
-	if(rightColPost<column+message.length()){
-		rightColPost=column+message.length();
-	}
 
 	if(topRowPost>row){
 		topRowPost=row;
 	}
 
-	if(bottRowPost<row+message.length()){
-		bottRowPost=row+message.length();
-	}
-
-
 	//Check if in row and cols are in the allocated board
 	if(d==Direction::Horizontal){	 //Horizontal
+		if(rightColPost<column+message.length()){
+			rightColPost=column+message.length();
+		}
 
 		if(message.length() + column >= cols){
 			resize(0,message.length()+column-cols+1);
@@ -58,7 +53,9 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 	}
 	else if(d==Direction::Vertical ){ 	//Vertical
 
-
+		if(bottRowPost<row+message.length()){
+			bottRowPost=row+message.length();
+		}
 
 		if(message.length() + row >= rows){
 			resize(message.length()+row-rows+1,0);
