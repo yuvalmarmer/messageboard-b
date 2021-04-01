@@ -17,10 +17,10 @@ namespace ariel {
 		private:
 		    unsigned int rows = 10;
 			unsigned int cols = 10;
-			unsigned int topRowPost = 10;
-			unsigned int bottRowPost = -1;
-			unsigned int lestColPost = 10;
-			unsigned int rightColPost = -1;
+			unsigned int topRowPost = 1000;
+			unsigned int bottRowPost = 0;
+			unsigned int lestColPost = 1000;
+			unsigned int rightColPost = 0;
 			
 			vector<string> *board;
 			void resize(unsigned int add_rows, unsigned int add_cols);
