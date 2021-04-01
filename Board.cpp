@@ -17,14 +17,7 @@ Board::Board(){
 	}
 
 }
-Board::~Board(){
-
-	for(vector<string>::iterator it = board->begin(); it != board->end(); ++it) {
-		delete &it;
-		board->erase(it);
-	}
-	delete board;
-}
+Board::~Board(){}
 
 
 void Board::post(unsigned int row, unsigned int column, Direction d, std::string message){
