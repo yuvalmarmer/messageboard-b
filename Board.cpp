@@ -164,7 +164,6 @@ void Board::resize(unsigned int add_rows, unsigned int add_cols){
 	//Adding new cols
 	for(unsigned int i=0;i<rows;++i){
 		string row = board->at(i);
-		board->resize(board->size()+1);
 		for(int j =0;j<add_cols;++j){
 			row.push_back('_');
 		}
