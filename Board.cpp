@@ -7,18 +7,18 @@ using namespace std;
 
 Board::Board(){
 	// Initi the board with fix sizes (rows, cols)
-	board = new vector<string>;
+	// board = new vector<string>;
 	for(int i=0;i<rows;++i){
 		string column;
 		for(int j =0;j<cols;++j){
 			column.push_back('_');
 		}
-		board->push_back(column);
+		board.push_back(column);
 	}
 
 }
 Board::~Board(){
-	delete board;
+	// delete board;
 }
 
 
@@ -35,7 +35,7 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 			resize(row-rows+1,0);
 		}
 		for(size_t i=0;i<message.length();++i){
-				board->at(row).at(column+i) = message[i];
+				board.at(row).at(column+i) = message[i];
 		}
 	}
 	else if(d==Direction::Vertical ){ 	//Vertical
@@ -47,7 +47,7 @@ void Board::post(unsigned int row, unsigned int column, Direction d, std::string
 		}
 		
 		for(size_t i=0;i<message.length();++i){
-				board->at(row+i).at(column) = message[i];
+				board.at(row+i).at(column) = message[i];
 		}
 	}
 
@@ -61,12 +61,12 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 		if(column<cols ){
 			if(column+length < cols){
 				for(size_t i=0;i<length;++i){
-					str.push_back(board->at(row).at(column+i));
+					str.push_back(board.at(row).at(column+i));
 				}
 			}
 			else{
 				for(size_t i=0;i<(cols-column);++i){
-					str += board->at(row).at(column+i);
+					str += board.at(row).at(column+i);
 				}
 				for(size_t i=0;i<(column+length-cols);++i){
 					str += "_";
@@ -83,12 +83,12 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 		if(row<rows){
 			if( row+length<rows){
 				for(size_t i=0;i<length;++i){
-					str += board->at(row+i).at(column);
+					str += board.at(row+i).at(column);
 				}
 			}
 			else{
 				for(size_t i=0;i<(rows-row);++i){
-					str += board->at(row+i).at(column);
+					str += board.at(row+i).at(column);
 				}
 				for(size_t i=0;i<(row+length-rows);++i){
 					str += "_";
@@ -107,8 +107,8 @@ std::string Board::read(unsigned int row, unsigned int column, Direction d , uns
 
 void Board::show(){
 
-	for(size_t i=0;i<board->size(); ++i){
-		std::cout << board->at(i) << endl;
+	for(size_t i=0;i<board.size(); ++i){
+		std::cout << board.at(i) << endl;
 	}
 }
 
@@ -121,15 +121,15 @@ void Board::resize(unsigned int add_rows, unsigned int add_cols){
 		for(int j =0;j<cols;++j){
 			column.push_back('_');
 		}
-		board->push_back(column);
+		board.push_back(column);
 	}
 	//Adding new cols
 	for(unsigned int i=0;i<rows;++i){
-		string row = board->at(i);
+		string row = board.at(i);
 		for(int j =0;j<add_cols;++j){
 			row.push_back('_');
 		}
-		board->at(i)=row;
+		board.at(i)=row;
 	}
 
 	rows = add_rows + rows;
