@@ -142,9 +142,7 @@ void Board::show(){
 
 	for(size_t i = topRowPost;i < bottRowPost; ++i){
 		for (size_t j = leftColPost; j < rightColPost;++j){
-			if(board->at(i)[j]!=0){
-				std::cout << board->at(i)[j];
-			}
+			std::cout << board->at(i)[j];
 		}
 		std::cout << std::endl;
 	}
@@ -155,15 +153,14 @@ void Board::show(){
 void Board::resize(unsigned int add_rows, unsigned int add_cols){
 
 	//Adding new rows
-	// for(int i=0;i<add_rows;++i){
-	// 	string column;
-	// 	board->resize(board->size()+1);
-	// 	for(int j =0;j<cols;++j){
-	// 		column.push_back('_');
-	// 	}
-	// 	board->push_back(column);
-	// }
-	board->resize(rows+add_rows);
+	for(int i=0;i<add_rows;++i){
+		string column;
+		for(int j =0;j<cols;++j){
+			column.push_back('_');
+		}
+		board->push_back(column);
+	}
+
 	//Adding new cols
 	for(unsigned int i=0;i<rows;++i){
 		string row = board->at(i);
