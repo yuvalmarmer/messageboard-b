@@ -37,6 +37,16 @@ int main(){
     //Show the board
     b.show();
 
+
+    //Simple overwrite at 190,190 and 190,190
+    b.post(190,190,ariel::Direction::Horizontal, message);
+    b.post(190,190,ariel::Direction::Vertical, message); 
+
+    std::cout << std::endl << "------BOARD------" <<std::endl << std::endl;
+    //Show the board
+    b.show();
+
+
     
     return 0;
 }
