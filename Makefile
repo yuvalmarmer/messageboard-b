@@ -13,7 +13,7 @@ run: test
 test: TestRunner.o StudentTest1.o StudentTest2.o $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $^ -o test
 
-main: Main.o $(OBJECTS)
+main: main.cpp $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $^ -o main
 
 %.o: %.cpp $(HEADERS)

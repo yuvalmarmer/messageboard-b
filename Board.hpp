@@ -26,5 +26,9 @@ namespace ariel {
 			vector<string> *board;
 			void resize(unsigned int add_rows, unsigned int add_cols);
 			void initRow(unsigned int row);
+			void postVerticaly(unsigned int row, unsigned int column, Direction d, std::string message);
+			void postHorizontaly(unsigned int row, unsigned int column, Direction d, std::string message);
+			std::string readVerticaly(unsigned int row, unsigned int column, Direction d, unsigned int length);
+			std::string readHorizontal(unsigned int row, unsigned int column, Direction d, unsigned int length);
  	};
 }
