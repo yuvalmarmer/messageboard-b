@@ -6,7 +6,7 @@
 #include "Board.hpp"
 
 int main(){
-    
+
     ariel::Board b;
     string message = "Yuval Marmer";
     
@@ -14,21 +14,26 @@ int main(){
     b.post(200,200,ariel::Direction::Horizontal, message);
     b.post(200,200,ariel::Direction::Vertical, message);
 
-    //Simple read at 200 200 of message length
-    std::cout << b.read(200,200,ariel::Direction::Horizontal, message.length()) << std::endl;  
-    std::cout << b.read(200,200,ariel::Direction::Horizontal, message.length()) << std::endl;
+    std::cout << "-----READING-----" <<std::endl;
 
+    //Simple read at 200 200 of message length
+    std::cout << "Horizontal(200,200) - " << b.read(200,200,ariel::Direction::Horizontal, message.length()) << std::endl;  
+    std::cout << "Vertical(200,200) - " << b.read(200,200,ariel::Direction::Vertical, message.length()) << std::endl;
+
+    std::cout << "------BOARD------" <<std::endl;
     //Show the board
     b.show();
 
     //Simple overwrite at 200,205 and 205,200
     b.post(200,205,ariel::Direction::Horizontal, message);
     b.post(205,200,ariel::Direction::Vertical, message);    
-
+    
+    std::cout << "-----READING-----" <<std::endl;
     //Simple read at 200 200 of message length
-    std::cout << b.read(200,200,ariel::Direction::Horizontal, message.length()) << std::endl;  
-    std::cout << b.read(200,200,ariel::Direction::Horizontal, message.length()) << std::endl;
-
+    std::cout << "Horizontal(200,200) - " << b.read(200,200,ariel::Direction::Horizontal, message.length()) << std::endl;  
+    std::cout << "Vertical(200,200) - " << b.read(200,200,ariel::Direction::Vertical, message.length()) << std::endl;
+    
+    std::cout << "------BOARD------" <<std::endl;
     //Show the board
     b.show();
 
