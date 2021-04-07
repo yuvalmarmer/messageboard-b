@@ -14,13 +14,13 @@ int main(){
     b.post(200,200,ariel::Direction::Horizontal, message);
     b.post(200,200,ariel::Direction::Vertical, message);
 
-    std::cout << "-----READING-----" <<std::endl;
+    std::cout << std::endl << "-----READING-----" <<std::endl << std::endl;
 
     //Simple read at 200 200 of message length
     std::cout << "Horizontal(200,200) - " << b.read(200,200,ariel::Direction::Horizontal, message.length()) << std::endl;  
     std::cout << "Vertical(200,200) - " << b.read(200,200,ariel::Direction::Vertical, message.length()) << std::endl;
 
-    std::cout << "------BOARD------" <<std::endl;
+    std::cout << std::endl << "------BOARD------" <<std::endl << std::endl;
     //Show the board
     b.show();
 
@@ -28,12 +28,12 @@ int main(){
     b.post(200,205,ariel::Direction::Horizontal, message);
     b.post(205,200,ariel::Direction::Vertical, message);    
     
-    std::cout << "-----READING-----" <<std::endl;
+    std::cout << std::endl << "-----READING-----" <<std::endl << std::endl;
     //Simple read at 200 200 of message length
     std::cout << "Horizontal(200,200) - " << b.read(200,200,ariel::Direction::Horizontal, message.length()) << std::endl;  
     std::cout << "Vertical(200,200) - " << b.read(200,200,ariel::Direction::Vertical, message.length()) << std::endl;
     
-    std::cout << "------BOARD------" <<std::endl;
+    std::cout << std::endl << "------BOARD------" <<std::endl << std::endl;
     //Show the board
     b.show();
 
